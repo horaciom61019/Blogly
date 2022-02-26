@@ -28,5 +28,21 @@
             </div>
         </form>
     </div>
+
+    <div class="col-sm-4 col-6">
+        <h2>Posts</h2>
+        <ul>
+            {% for post in user.posts%}
+            <li>
+                <p><a href="/posts/{{ post.id }}">{{ post.title }}</a></p>
+            </li>
+            {% endfor %}
+        </ul>
+        <form method="POST">
+            <div class="d-grid gap-2 d-md-block">
+                <a href="/users/{{ user.id }}/posts/new" class="btn btn-primary">Add Post</a>
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Add a Post{% endblock %}
+
+{% block content %}
+
+<!-- {% for msg in get_flashed_messages() %}
+    <p> {{ msg }} </p>
+{% endfor %} -->
+
+<h1>Add a Post for {{ user.full_name }}</h1>
+<form method="POST">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" name="title">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="content">Content</label>
+        <input type="text" class="form-control" id="content" name="content">
+    </div>
+    <br>
+    <div class="form-group">
+        <a href="/users" class="btn btn-outline-secondary">Cancel</a>
+        <button type="submit" class="btn btn-success">Add</button>
+    </div>
+</form>
+{% endblock %}

@@ -1,6 +1,5 @@
 """Models for Blogly."""
 
-from turtle import title
 from flask_sqlalchemy import SQLAlchemy
 import datetime
 
@@ -37,6 +36,9 @@ class User(db.Model):
 
         return f"{self.first_name} {self.last_name}"
 
+
+###################################### PART TWO - Adding Posts ####################################
+
 class Post(db.Model):
     """ Post data model  """
 
@@ -48,4 +50,25 @@ class Post(db.Model):
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now)
     # a foreign key to the User table
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    
+
+
+################################# PART THREE - Add M2M Relationship ################################
+
+class Tag(db.Model):
+    """ Tag data model - can be added to posts """
+
+    __tablename__ = "tags"
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.Text, nullable=False, unique=True)
+
+    posts = db.relationship("Post", secondary="posts_tags", backref="tags")
+
+class PostTag(db.Model):
+    """ Tag on a post """
+
+    __tablename__ = "posts_tags"
+
+    post_id = db.Column(db.Integer, db.ForeignKey("posts.id"), primary_key=True)
+    tag_id = db.Column(db.Integer, db.ForeignKey("tags.id"), primary_key=True)
+

@@ -2,13 +2,15 @@
 {% block title %} Users {% endblock %}
 
 {% block content %}
-<h1>Users</h1>
-<ul>
-    {% for user in users %}
-    <li>
-        <a href="/users/{{ user.id }}">{{ user.full_name }}</a>
-    </li>
-    {% endfor %}
-</ul>
-<button type="submit" class="btn btn-primary" onclick="location.href='/users/new'">Add User</button>
+<div>
+    <h1>Users</h1>
+    <ul>
+        {% for user in users %}
+        <li>
+            <a href="/users/{{ user.id }}">{{ user.full_name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <button type="submit" class="btn btn-primary" onclick="location.href='/users/new'">Add User</button>
+</div>
 {% endblock %}

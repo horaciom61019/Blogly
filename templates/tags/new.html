@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Create User{% endblock %}
+
+{% block content %}
+<h1>Create a tag</h1>
+<form method="POST">
+    <div class="form-group row">
+        <div class="col-sm-1">
+            <label for="tag_name">Name</label>
+        </div>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" id="tag_name" name="tag_name" placeholder="Enter a name for the tag" required>
+        </div>
+    </div>
+    <br>
+    <a href="/tags" class="btn btn-outline-info">Cancel</a>
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>
+{% endblock %}
